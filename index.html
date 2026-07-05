@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Sai Peddapati — Software Development Engineer II</title>
+<meta name="description" content="Portfolio of Sri Sai Peddapati, backend engineer specializing in Java, Spring Boot, Kafka, and data platforms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d1424;
+  --panel:#141d33;
+  --panel-2:#182240;
+  --line:#26314f;
+  --text:#e9edf6;
+  --muted:#93a0ba;
+  --amber:#ffb454;
+  --cyan:#7fd7d0;
+  --radius:14px;
+  --maxw:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--text);
+  font-family:'Inter',system-ui,sans-serif;
+  line-height:1.65;
+  font-size:16px;
+  background-image:
+    linear-gradient(rgba(38,49,79,.28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(38,49,79,.28) 1px, transparent 1px);
+  background-size:48px 48px;
+}
+::selection{background:var(--amber);color:var(--ink)}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(13,20,36,.85);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.95rem;color:var(--text)}
+.logo em{color:var(--amber);font-style:normal}
+.nav-links{display:flex;gap:22px;font-family:'JetBrains Mono',monospace;font-size:.78rem}
+.nav-links a{color:var(--muted)}
+.nav-links a:hover{color:var(--amber);text-decoration:none}
+@media(max-width:640px){.nav-links{display:none}}
+
+/* ---------- hero ---------- */
+header{padding:84px 0 60px;position:relative;overflow:hidden}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.08em;
+  color:var(--amber);margin-bottom:18px;display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:#3ddc84;
+  box-shadow:0 0 10px #3ddc84;animation:pulse 2.2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;
+  font-size:clamp(2.4rem,7vw,4.4rem);line-height:1.05;letter-spacing:-.02em;
+}
+h1 .accent{color:var(--amber)}
+.tagline{margin-top:18px;max-width:620px;color:var(--muted);font-size:1.05rem}
+.tagline strong{color:var(--text);font-weight:600}
+
+/* status line */
+.statusline{
+  margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 26px;
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);
+}
+.statusline span b{color:var(--cyan);font-weight:500}
+
+/* pipeline signature */
+.pipeline{margin-top:52px;position:relative}
+.pipeline-track{
+  position:relative;height:2px;background:var(--line);border-radius:2px;overflow:visible;
+}
+.packet{
+  position:absolute;top:-3px;width:8px;height:8px;border-radius:2px;background:var(--amber);
+  animation:flow 6s linear infinite;
+}
+.packet.c{background:var(--cyan);animation-duration:8s;animation-delay:-3s}
+.packet.d{animation-delay:-1.5s;animation-duration:7s}
+@keyframes flow{from{left:-2%;opacity:0}8%{opacity:1}92%{opacity:1}to{left:100%;opacity:0}}
+.pipeline-nodes{display:flex;justify-content:space-between;margin-top:14px;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted)}
+.pipeline-nodes b{display:block;color:var(--text);font-weight:600;font-size:.8rem}
+@media(prefers-reduced-motion:reduce){.packet{animation:none;display:none}.eyebrow::before{animation:none}}
+
+/* ---------- sections ---------- */
+section{padding:64px 0;border-top:1px solid var(--line)}
+.sec-label{
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--amber);
+  letter-spacing:.08em;margin-bottom:8px;
+}
+h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.5rem,3.5vw,2.1rem);
+  font-weight:600;letter-spacing:-.01em;margin-bottom:34px}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:40px}
+@media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+.about-grid p{color:var(--muted);margin-bottom:16px}
+.about-grid p strong{color:var(--text)}
+.fact-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;font-family:'JetBrains Mono',monospace;font-size:.8rem;
+}
+.fact-card .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line)}
+.fact-card .row:last-child{border-bottom:none}
+.fact-card .k{color:var(--muted)}
+.fact-card .v{color:var(--cyan);text-align:right}
+
+/* experience */
+.job{
+  display:grid;grid-template-columns:170px 1fr;gap:26px;
+  padding:28px 0;border-bottom:1px solid var(--line);
+}
+.job:last-child{border-bottom:none}
+@media(max-width:640px){.job{grid-template-columns:1fr;gap:8px}}
+.job-when{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted);padding-top:5px}
+.job-when .live{color:#3ddc84}
+.job h3{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:600}
+.job .co{color:var(--amber);font-size:.9rem;font-weight:500;margin-bottom:12px;display:block}
+.job ul{list-style:none;color:var(--muted);font-size:.94rem}
+.job li{padding-left:20px;position:relative;margin-bottom:9px}
+.job li::before{content:"▸";position:absolute;left:0;color:var(--cyan);font-size:.8rem;top:2px}
+.job li b{color:var(--text);font-weight:600}
+
+/* skills */
+.skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.skill-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.skill-card h4{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--amber);
+  letter-spacing:.06em;margin-bottom:14px;font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{
+  font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--text);
+  background:var(--panel-2);border:1px solid var(--line);border-radius:6px;padding:5px 10px;
+  transition:border-color .15s,color .15s;
+}
+.tag:hover{border-color:var(--amber);color:var(--amber)}
+
+/* projects */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.proj{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;display:flex;flex-direction:column;transition:transform .18s,border-color .18s;
+}
+.proj:hover{transform:translateY(-3px);border-color:var(--amber)}
+.proj .ctx{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);margin-bottom:10px}
+.proj h3{font-family:'Space Grotesk',sans-serif;font-size:1.08rem;font-weight:600;margin-bottom:10px}
+.proj p{color:var(--muted);font-size:.92rem;flex:1}
+.proj .stack{margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted)}
+.proj .stack em{color:var(--amber);font-style:normal}
+
+/* awards + education */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){.duo{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.panel h3{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;margin-bottom:14px}
+.panel ul{list-style:none;color:var(--muted);font-size:.92rem}
+.panel li{padding:8px 0;border-bottom:1px dashed var(--line);display:flex;gap:10px}
+.panel li:last-child{border-bottom:none}
+.panel li::before{content:"★";color:var(--amber);font-size:.75rem;padding-top:3px}
+.edu-degree{color:var(--text);font-weight:600}
+.edu-meta{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted);margin-top:6px}
+
+/* contact */
+.contact{
+  background:linear-gradient(135deg,var(--panel),var(--panel-2));
+  border:1px solid var(--line);border-radius:var(--radius);padding:44px 32px;text-align:center;
+}
+.contact h2{margin-bottom:12px}
+.contact p{color:var(--muted);max-width:520px;margin:0 auto 26px}
+.btn-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  font-family:'JetBrains Mono',monospace;font-size:.82rem;padding:12px 22px;border-radius:8px;
+  border:1px solid var(--amber);color:var(--amber);transition:background .15s,color .15s;
+}
+.btn:hover{background:var(--amber);color:var(--ink);text-decoration:none}
+.btn.primary{background:var(--amber);color:var(--ink)}
+.btn.primary:hover{background:#ffc678}
+.contact .phones{margin-top:22px;font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--muted)}
+
+footer{padding:34px 0;text-align:center;font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;color:var(--muted);border-top:1px solid var(--line)}
+footer em{color:var(--amber);font-style:normal}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="logo">srisai<em>.dev</em></div>
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#experience">experience</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">status: shipping to production</div>
+    <h1>Sri Sai<br>Peddapati<span class="accent">.</span></h1>
+    <p class="tagline"><strong>Software Development Engineer II</strong> building scalable backend services and data platforms — currently at <strong>Sigmoid</strong>, engineering for <strong>Goldman Sachs</strong>. I work where distributed systems, data, and product meet.</p>
+    <div class="statusline">
+      <span>role: <b>SDE-II</b></span>
+      <span>base: <b>India</b></span>
+      <span>experience: <b>5+ yrs</b></span>
+      <span>core: <b>Java · Spring Boot · Kafka</b></span>
+    </div>
+    <div class="pipeline" aria-hidden="true">
+      <div class="pipeline-track">
+        <span class="packet" style="animation-delay:0s"></span>
+        <span class="packet c"></span>
+        <span class="packet d"></span>
+        <span class="packet c" style="animation-delay:-5.5s"></span>
+      </div>
+      <div class="pipeline-nodes">
+        <span><b>TCS</b>2021</span>
+        <span><b>Sigmoid × Goldman Sachs</b>2024</span>
+        <span><b>next →</b>your team?</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap reveal">
+    <div class="sec-label">// about</div>
+    <h2>Backend-first, product-aware.</h2>
+    <div class="about-grid">
+      <div>
+        <p>I'm a results-driven engineer with a B.Tech in Electronics &amp; Communications who found a home in <strong>backend engineering and system design</strong>. Over five years I've moved from data engineering internships to owning production services for one of the world's largest financial institutions.</p>
+        <p>My day-to-day spans the full lifecycle: <strong>requirement analysis and grooming</strong> with product teams, building and maintaining scalable services, debugging live issues, and <strong>deploying and monitoring</strong> systems for reliability and cost efficiency.</p>
+        <p>Lately I've been pairing that foundation with <strong>AI-assisted development and building AI agents</strong> for quick automation tasks — using new tools to ship faster without giving up engineering rigor.</p>
+      </div>
+      <div class="fact-card" aria-label="Quick facts">
+        <div class="row"><span class="k">current</span><span class="v">Sigmoid (SDE-II)</span></div>
+        <div class="row"><span class="k">client</span><span class="v">Goldman Sachs</span></div>
+        <div class="row"><span class="k">previously</span><span class="v">TCS</span></div>
+        <div class="row"><span class="k">degree</span><span class="v">B.Tech ECE, JNTU-H</span></div>
+        <div class="row"><span class="k">incidents/mo</span><span class="v">30+ resolved</span></div>
+        <div class="row"><span class="k">dev time saved</span><span class="v">−25%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap reveal">
+    <div class="sec-label">// experience</div>
+    <h2>Deployment history</h2>
+
+    <div class="job">
+      <div class="job-when"><span class="live">● live</span><br>Apr 2024 — Present<br>On-site</div>
+      <div>
+        <h3>Software Development Engineer II</h3>
+        <span class="co">Sigmoid · Client: Goldman Sachs</span>
+        <ul>
+          <li><b>Full-stack ownership:</b> develop and maintain scalable back-end services while enhancing front-end features for a seamless user experience.</li>
+          <li><b>Debugging &amp; enhancements:</b> identify and resolve application issues; ship new features that improve product functionality.</li>
+          <li><b>Product collaboration:</b> partner with product teams on requirement analysis and grooming sessions to shape application improvements.</li>
+          <li><b>Deploy &amp; monitor:</b> manage deployments and monitor system performance for reliability and optimal resource utilization.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-when">Aug 2021 — Apr 2024<br>Ahmedabad</div>
+      <div>
+        <h3>Software Engineer</h3>
+        <span class="co">Tata Consultancy Services</span>
+        <ul>
+          <li><b>+15% performance:</b> designed and implemented feature enhancements that lifted overall software performance.</li>
+          <li><b>30+ incidents/month:</b> resolved technical incidents at pace, improving system reliability and user satisfaction.</li>
+          <li><b>−25% dev time:</b> built a comprehensive reusable component library that boosted team productivity.</li>
+          <li><b>100% CSAT:</b> engineered data-driven user onboarding across multiple business scenarios.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-when">Mar 2021 — Jul 2021<br>Remote</div>
+      <div>
+        <h3>Jr Data Engineer — Intern</h3>
+        <span class="co">Tata Consultancy Services</span>
+        <ul>
+          <li><b>System integration:</b> integrated a complaint and grievance management system for citizen services.</li>
+          <li><b>+20% efficiency:</b> enhanced business processes and reporting workflows.</li>
+          <li><b>Data pipelines:</b> cleaned and extracted data from multiple sources into consolidated reporting.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-when">Jun 2020 — Jul 2022<br>Hyderabad</div>
+      <div>
+        <h3>R&amp;D Intern</h3>
+        <span class="co">Centre for Materials for Electronics Technology (C-MET)</span>
+        <ul>
+          <li><b>Antenna research:</b> studied materials to improve antenna signal strength and coverage while optimizing production costs.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap reveal">
+    <div class="sec-label">// skills</div>
+    <h2>Topics I consume &amp; produce</h2>
+    <div class="skill-groups">
+      <div class="skill-card">
+        <h4>languages</h4>
+        <div class="tags"><span class="tag">Java</span><span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">SQL</span></div>
+      </div>
+      <div class="skill-card">
+        <h4>frameworks</h4>
+        <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Spring</span><span class="tag">Node.js</span><span class="tag">React.js</span><span class="tag">ORM / Mithra</span></div>
+      </div>
+      <div class="skill-card">
+        <h4>infra &amp; data</h4>
+        <div class="tags"><span class="tag">Apache Kafka</span><span class="tag">Kubernetes</span><span class="tag">Docker</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">Git</span></div>
+      </div>
+      <div class="skill-card">
+        <h4>practice</h4>
+        <div class="tags"><span class="tag">System Design</span><span class="tag">Back-end Engineering</span><span class="tag">Problem Solving</span><span class="tag">AI Agents</span><span class="tag">Prototyping</span><span class="tag">Copilot / Vibe Coding</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap reveal">
+    <div class="sec-label">// projects</div>
+    <h2>Selected builds</h2>
+    <div class="proj-grid">
+      <div class="proj">
+        <div class="ctx">engg hack-a-thon</div>
+        <h3>Cloud Cost Intelligence</h3>
+        <p>A cloud cost analysis platform that surfaces inefficiencies and cuts infrastructure spend with automated insights — helping developers make cost-aware decisions from real resource and usage patterns.</p>
+        <div class="stack"><em>stack:</em> cloud APIs · automated analysis</div>
+      </div>
+      <div class="proj">
+        <div class="ctx">sigmoid analytics</div>
+        <h3>AI-Powered CPG Sales Analytics &amp; Forecasting</h3>
+        <p>End-to-end, plug-and-play sales intelligence for CPG enterprises: upload raw transaction, product, and store data to auto-train a revenue forecasting model. Executive dashboard covers profit, margins, discount erosion, brand performance, and probabilistic forecasts with confidence intervals.</p>
+        <div class="stack"><em>stack:</em> ML · data engineering · full stack</div>
+      </div>
+      <div class="proj">
+        <div class="ctx">b.tech · 2019</div>
+        <h3>ML-Based Medication Forecasting</h3>
+        <p>Applied machine learning to predict medication needs, improving precision and efficiency in pharmaceutical planning.</p>
+        <div class="stack"><em>stack:</em> machine learning</div>
+      </div>
+      <div class="proj">
+        <div class="ctx">b.tech · 2020</div>
+        <h3>YouTube Recommendations &amp; Spotify Automation</h3>
+        <p>Recommendation systems for YouTube content plus automated Spotify workflows built with advanced automation tooling.</p>
+        <div class="stack"><em>stack:</em> automation · recsys</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap reveal">
+    <div class="sec-label">// education &amp; recognition</div>
+    <h2>Foundation &amp; awards</h2>
+    <div class="duo">
+      <div class="panel">
+        <h3>Education</h3>
+        <p class="edu-degree">B.Tech — Electronics &amp; Communications</p>
+        <p class="edu-meta">JNTU Hyderabad · Ace Engineering College<br>2017 — 2021 · GPA 7.78 · Distinction</p>
+      </div>
+      <div class="panel">
+        <h3>Awards</h3>
+        <ul>
+          <li>Spot Award — Sigmoid</li>
+          <li>Star of the Month (×2) — TCS</li>
+          <li>On the Spot Award — TCS</li>
+          <li>Distinction in schooling &amp; graduation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap reveal">
+    <div class="contact">
+      <div class="sec-label">// contact</div>
+      <h2>Let's build something reliable.</h2>
+      <p>Open to challenging software engineering roles in backend, distributed systems, and data platforms.</p>
+      <div class="btn-row">
+        <a class="btn primary" href="mailto:srisai.peddapati@gmail.com">Email me</a>
+        <a class="btn" href="#" aria-label="LinkedIn profile">LinkedIn</a>
+        <a class="btn" href="#" aria-label="GitHub profile">GitHub</a>
+        <a class="btn" href="#" aria-label="LeetCode profile">LeetCode</a>
+      </div>
+      <p class="phones">+91 86863 48428 · +91 83416 09034</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">designed &amp; shipped by <em>Sri Sai Peddapati</em> · © 2026</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
+
